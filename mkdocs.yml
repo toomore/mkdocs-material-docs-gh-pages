@@ -1,0 +1,4 @@
+site_name: My Docs
+site_url: https://mkdocs.toomore.net/
+theme:
+  name: material
