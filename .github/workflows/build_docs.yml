@@ -26,4 +26,4 @@ jobs:
               run: |
                   git add -f site
                   git commit -m 'Deploy MkDocs to GitHub Pages'
-                  git push -f origin `git subtree push --prefix site origin gh-pages`
+                  git subtree push --prefix site origin gh-pages
