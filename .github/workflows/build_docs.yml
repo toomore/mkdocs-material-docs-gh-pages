@@ -21,10 +21,10 @@ jobs:
             - name: Build MkDocs
               run: |
                   uv sync -v
-                  uv run mkdocs build
+                  uv run mkdocs build -d ./docs
             - name: Deploy to GitHub Pages
               run: |
                   git checkout -b gh-pages main
-                  git add -f site
+                  git add -f ./docs
                   git commit -m 'Deploy MkDocs to GitHub Pages'
                   git push -f origin gh-pages
