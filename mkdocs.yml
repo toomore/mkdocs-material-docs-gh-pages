@@ -1,3 +1,4 @@
+docs_dir: "zh-TW"
 site_name: My Docs
 site_url: https://mkdocs.toomore.net/
 theme:
