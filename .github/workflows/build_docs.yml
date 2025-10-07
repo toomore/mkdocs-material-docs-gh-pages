@@ -21,7 +21,7 @@ jobs:
             - name: Build MkDocs
               run: |
                   uv sync -v
-                  uv run mkdocs build --clean
+                  uv run mkdocs build
             - name: Deploy to GitHub Pages
               run: |
                   git checkout -b gh-pages main
