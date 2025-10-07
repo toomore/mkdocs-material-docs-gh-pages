@@ -21,7 +21,7 @@ jobs:
             - name: Install the project
               run: uv sync -v
             - name: Build MkDocs
-              run: mkdocs build --clean
+              run: uv run mkdocs build --clean
             - name: Deploy to GitHub Pages
               run: |
                   git add -f site
