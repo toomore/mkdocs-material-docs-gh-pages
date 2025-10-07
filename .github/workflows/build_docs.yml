@@ -18,6 +18,7 @@ jobs:
               uses: astral-sh/setup-uv@v6
               with:
                   enable-cache: true
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
             - name: Install the project
               run: uv sync -v
             - name: Build MkDocs
