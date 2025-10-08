@@ -20,25 +20,23 @@ jobs:
               uses: astral-sh/setup-uv@v6
               with:
                   enable-cache: true
+            # ----- #0 By using worktree ----- #
             - name: Build Mkdocs
               run: |
                   git worktree add ./docs gh-pages
                   rm -rf ./docs/*
                   uv run mkdocs build -v -d ./docs
                   cd ./docs
-                  git commit -a -m 'Deploy on ${{ github.ref_name }}.${{ github.sha }}'
+                  git commit -a -m 'Deploy on ${{ github.ref_name }} ${{ github.sha }}'
                   git push origin HEAD
-            # ----- #1 ----- #
+            # ----- #1 By using gh-deploy ----- #
             #- name: Build MkDocs
             #  run: |
             #      uv run mkdocs gh-deploy -b gh-pages -d ./docs -v --force
-            # ----- #2 ----- #
+            # ----- #2 By Creating new branch and forcing to push ----- #
             #- name: Build MkDocs
             #  run: |
-            #      uv sync -v
             #      uv run mkdocs build -d ./docs
-            #- name: Deploy to GitHub Pages
-            #  run: |
             #      git checkout -b gh-pages main
             #      git add -f ./docs
             #      git commit -m 'Deploy MkDocs to GitHub Pages'
