@@ -3,3 +3,9 @@ site_name: My Docs
 site_url: https://mkdocs.toomore.net/
 theme:
   name: material
+plugins:
+  - git-revision-date-localized:
+      type: iso_datetime
+      locale: en
+      enable_creation_date: true
+      enable_parallel_processing: true
