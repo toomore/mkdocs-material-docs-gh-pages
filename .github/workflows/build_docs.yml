@@ -26,7 +26,7 @@ jobs:
                   rm -rf ./docs/*
                   uv run mkdocs build -v -d ./docs
                   cd ./docs
-                  git commit -m 'Deploy on ${{ github.ref_name }}.${{ github.sha }}'
+                  git commit -a -m 'Deploy on ${{ github.ref_name }}.${{ github.sha }}'
                   git push origin HEAD
             # ----- #1 ----- #
             #- name: Build MkDocs
