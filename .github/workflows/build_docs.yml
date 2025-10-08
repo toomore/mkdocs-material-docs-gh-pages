@@ -20,9 +20,19 @@ jobs:
               uses: astral-sh/setup-uv@v6
               with:
                   enable-cache: true
-            - name: Build MkDocs
+            - name: Build Mkdocs
               run: |
-                  uv run mkdocs gh-deploy -b gh-pages -d ./docs -v --force
+                  git worktree add ./docs gh-pages
+                  rm -rf ./docs/*
+                  uv run mkdocs build -v -d ./docs
+                  cd ./docs
+                  git commit -m 'Deploy on ${{ github.ref_name }}.${{ github.sha }}'
+                  git push origin HEAD
+            # ----- #1 ----- #
+            #- name: Build MkDocs
+            #  run: |
+            #      uv run mkdocs gh-deploy -b gh-pages -d ./docs -v --force
+            # ----- #2 ----- #
             #- name: Build MkDocs
             #  run: |
             #      uv sync -v
