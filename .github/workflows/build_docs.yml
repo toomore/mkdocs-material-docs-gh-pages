@@ -27,8 +27,11 @@ jobs:
                   rm -rf ./docs/*
                   uv run mkdocs build -v -d ./docs
                   cd ./docs
-                  git commit -a -m 'Deploy on ${{ github.ref_name }} ${{ github.sha }}'
-                  git push origin HEAD
+                  if [ -n "$(git status --porcelain)" ]; then
+                    git commit -a -m 'Deploy on ${{ github.ref_name }} ${{ github.sha }}'
+                    git push origin HEAD
+                  else
+                    echo "No changes to commit."
             # ----- #1 By using gh-deploy ----- #
             #- name: Build MkDocs
             #  run: |
